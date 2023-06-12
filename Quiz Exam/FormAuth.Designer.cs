@@ -43,13 +43,12 @@
             this.labelAuthorization.BackColor = System.Drawing.Color.Transparent;
             this.labelAuthorization.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelAuthorization.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelAuthorization.ForeColor = System.Drawing.Color.Red;
+            this.labelAuthorization.ForeColor = System.Drawing.Color.White;
             this.labelAuthorization.Location = new System.Drawing.Point(325, 9);
             this.labelAuthorization.Name = "labelAuthorization";
             this.labelAuthorization.Size = new System.Drawing.Size(193, 38);
             this.labelAuthorization.TabIndex = 0;
             this.labelAuthorization.Text = "Авторизация:";
-            this.labelAuthorization.Click += new System.EventHandler(this.labelAuthorization_Click);
             // 
             // buttonAuth
             // 
@@ -93,12 +92,13 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.buttonExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.buttonExit.FlatAppearance.BorderSize = 0;
             this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExit.Location = new System.Drawing.Point(12, 257);
+            this.buttonExit.ForeColor = System.Drawing.Color.White;
+            this.buttonExit.Location = new System.Drawing.Point(12, 246);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(103, 34);
+            this.buttonExit.Size = new System.Drawing.Size(103, 36);
             this.buttonExit.TabIndex = 6;
             this.buttonExit.Text = "Выход";
             this.buttonExit.UseVisualStyleBackColor = false;
@@ -111,9 +111,9 @@
             this.buttonReg.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Blue;
             this.buttonReg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReg.ForeColor = System.Drawing.Color.White;
-            this.buttonReg.Location = new System.Drawing.Point(308, 246);
+            this.buttonReg.Location = new System.Drawing.Point(296, 246);
             this.buttonReg.Name = "buttonReg";
-            this.buttonReg.Size = new System.Drawing.Size(210, 36);
+            this.buttonReg.Size = new System.Drawing.Size(222, 36);
             this.buttonReg.TabIndex = 7;
             this.buttonReg.Text = "Зарегистрироваться";
             this.buttonReg.UseVisualStyleBackColor = false;
@@ -137,10 +137,9 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Приложение \"Викторина\"";
+            this.Text = "Авторизация в приложение \"Викторина\"";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.MouseEnter += new System.EventHandler(this.labelAuthorization_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -18,18 +18,22 @@ namespace Quiz_Exam
         public bool VerificationLogin() // проверка не существует ли уже данного логина
         {
             bool LoginUse = false;
-            string[] stringAsAccount = File.ReadAllLines(MainForm.pathAccounts);
-            foreach (string s in stringAsAccount)
+            if(System.IO.File.Exists(MainForm.pathAccounts))
             {
-                Account Ac = JsonSerializer.Deserialize<Account>(s);
-                if (textBoxLog.Text == Ac.Login)
+                string[] stringAsAccount = File.ReadAllLines(MainForm.pathAccounts);
+                foreach (string s in stringAsAccount)
                 {
-                    LoginUse = true;
-                    break;
+                    Account Ac = JsonSerializer.Deserialize<Account>(s);
+                    if (textBoxLog.Text == Ac.Login)
+                    {
+                        LoginUse = true;
+                        break;
+                    }
                 }
+                return LoginUse;
             }
-
-            return LoginUse;
+            else
+            { return false; }
         }
         public Account Account { get; set; }
         public FormReg()
@@ -38,18 +42,9 @@ namespace Quiz_Exam
             textBoxPass.Enabled = false;
             textBoxBirthday.Enabled = false;
             buttonReg.Enabled = false;
-            Account = null;
-           
+            Account = null;           
         }
-        
-
-       /* public FormReg(Account account, bool isEdit)
-        {
-            InitializeComponent();
-            account = new Account(account.Login, account.Password, account.Birthday);
-
-        }*/
-
+       
         private void FormReg_Load(object sender, EventArgs e)
         {
 
@@ -65,7 +60,7 @@ namespace Quiz_Exam
         private void textBoxPass_TextChanged(object sender, EventArgs e)
         {
            
-            if (textBoxPass.Text.Length > 4)
+            if (textBoxPass.Text.Length > 3)
                 textBoxBirthday.Enabled = true;            
             if (VerificationLogin())
             {
@@ -80,19 +75,19 @@ namespace Quiz_Exam
         private void textBoxLog_MouseClick(object sender, MouseEventArgs e)
         {           
             if (textBoxLog.Text == "Введите логин")
-                textBoxLog.Text = " ";
+                textBoxLog.Text = "";
         }
 
         private void textBoxPass_MouseClick(object sender, MouseEventArgs e)
         {
             if (textBoxPass.Text == "Введите пароль")
-                textBoxPass.Text = " ";
+                textBoxPass.Text = "";
         }
 
         private void textBoxBithdday_MouseClick(object sender, MouseEventArgs e)
         {
             if (textBoxBirthday.Text == "Введите Дату Рождения")
-                textBoxBirthday.Text = " ";
+                textBoxBirthday.Text = "";
 
         }
         private void textBoxBirthday_TextChanged(object sender, EventArgs e)
@@ -112,6 +107,8 @@ namespace Quiz_Exam
             string Log = textBoxLog.Text;
             string Pass = textBoxPass.Text;
             string birth = textBoxBirthday.Text;
+           /* double id = MainForm.uniqueId;
+            MainForm.uniqueId++;*/
             if (textBoxBirthday.Text.Length > 0)
             {
                 try
@@ -119,29 +116,11 @@ namespace Quiz_Exam
                     DateTime birthday = Convert.ToDateTime(birth);
                     Account = new Account(Log, Pass, birthday);
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show(ex.Message, "Ошибка");
+                    MessageBox.Show("Неверный формат даты, пример ввода (01.01.2001)", "Ошибка корректности ввода даты рождения");
                 }
             }
-
-            
-
-
-
-
-
-
-            /*string Symbol=Semiconductor.Symbol;
-            int AtomicNumber=Semiconductor.AtomicNumber;*/
-
-
-
-
-
-
-
-
 
             Close();
         }
